@@ -10,4 +10,5 @@ Card Game
  - 631310276	ชิษณุพงศ์ นาคนนท์    ชิว             *[2D artisit/3D artisit]*
  - 631310092	ภูษณะ กัลปิยะภัณฑ์    แผ่นเงิน(เงิน)    *[Modler / Level Design / Rigging]*
  - 631310440	ธนกฤต พุ่มพวง       แทนนี้          *[]*
+Unity Vertion 2021.3.10f1
 
