@@ -1,27 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class Play_Crads : MonoBehaviour
+public class play_cards : MonoBehaviour
 {
-    // Start is called before the first frame update
-    Vector2 myPos;
-    void Start()
+    public List<GameObject> deck = new List<GameObject>();
+    public List<GameObject> playedDeck = new List<GameObject>();
+    public Transform[] cardSlots;
+    public bool[] availableCaedInDeck;
+    public Text deckSizeText;
+
+    public void DrawCard()
     {
-        
+        if (deck.Count >= 1)
+        {
+            GameObject randCard = deck[Random.Range(0, deck.Count)];
+            for (int i = 0; i < availableCaedInDeck.Length; i++)
+            {
+                if (availableCaedInDeck[i] == true)
+                {
+                    randCard.gameObject.SetActive(true);
+                    randCard.transform.position = cardSlots[i].position;
+                    availableCaedInDeck[i] = false;
+                    deck.Remove(randCard);
+                    return;
+                }
+            }
+        }
+    }
+    public void ShuffleCaed()
+    {
+        if (true)
+        {
+
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+
+    }
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (availableCaedInDeck.Length <= 0)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            myPos = new Vector2(mousePos.x, mousePos.y);
+            ShuffleCaed();
         }
-        else
-        {
 
-        }
+        deckSizeText.text = deck.Count.ToString();
+
+        //if (Input.GetMouseButton(0))
+        //{
+        //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    //myPos = new Vector2(mousePos.x, mousePos.y);
+        //}
+        //else
+        //{
+
+        //}
     }
 }

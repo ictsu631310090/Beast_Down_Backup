@@ -35,6 +35,10 @@ public class Main_Menu : MonoBehaviour
         Credit.SetActive(false);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit(); // จะทำงานได้ต่อเมื่อเป็น .exe
+    }
     void Start()
     {
         select_gamemode.SetActive(false);
