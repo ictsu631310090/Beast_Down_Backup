@@ -5,21 +5,13 @@ using UnityEngine.EventSystems;
 
 public class useCard : MonoBehaviour
 {
-    public bool hasplay;
-    public bool onHand;
-    public Transform cardplay;
-    public Transform cardplayed;
-    public Transform dackCard;
+    public static bool hasplay;
+    public static bool onHand;
+    public static Transform cardplay;
+    public static Transform cardplayed;
+    public static Transform dackCard;
+    public static int positionchoosecard;
 
-    public void OnMouseDown()
-    {
-        if (hasplay == false)
-        {
-            transform.position = cardplay.position;
-            onHand = true;
-        }
-        Debug.Log("Hi");
-    }
     public void UseCard()
     {
         transform.position = cardplayed.position;
@@ -27,7 +19,7 @@ public class useCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        positionchoosecard = 0;
     }
     void Update()
     {

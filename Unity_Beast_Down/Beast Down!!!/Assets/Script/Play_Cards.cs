@@ -12,6 +12,12 @@ public class play_cards : MonoBehaviour
     public bool[] availableCaedInDeck;
     public Text deckSizeText;
 
+    public static bool choosecard = false;
+    public static int hitcard = 0;
+
+    public GameObject[] number;
+    public Transform[] numSlotsAll;
+
     public void DrawCard()
     {
         if (deck.Count >= 1)
@@ -51,14 +57,13 @@ public class play_cards : MonoBehaviour
 
         deckSizeText.text = deck.Count.ToString();
 
-        //if (Input.GetMouseButton(0))
-        //{
-        //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    //myPos = new Vector2(mousePos.x, mousePos.y);
-        //}
-        //else
-        //{
-
-        //}
+        if (choosecard)
+        {
+            Debug.Log(hitcard);
+            Debug.Log(useCard.positionchoosecard);
+            number[hitcard - 1].transform.position = numSlotsAll[useCard.positionchoosecard - 1].position;
+            
+            choosecard = false;
+        }
     }
 }

@@ -9,11 +9,17 @@ public class MainCharacterScript : MonoBehaviour
     public GameObject canva;
     public float running_speed = 6.0f;
     public static float _SpeedTime = 1.0f;
+    //test
+    public bool running = false;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "map")
         {
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "enemy")
+        {
+            Debug.Log("Hit");
         }
     }
     public void zoomin()
@@ -46,6 +52,21 @@ public class MainCharacterScript : MonoBehaviour
         {
             zoomout();
         }
-        //transform.Translate(1 * Time.deltaTime * running_speed, 0, 0);//เดินไปข้างหน้าตลอดเวลา
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            running = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            running = false;
+        }
+        if (running)
+        {
+            transform.Translate(1 * Time.deltaTime * running_speed, 0, 0);//เดินไปข้างหน้า
+        }
+        else if (running == false)
+        {
+
+        }
     }
 }
