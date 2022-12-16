@@ -357,15 +357,16 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Script/button_in_game.cs"
-"Assets/Script/chooseCard1.cs"
-"Assets/Script/chooseCard2.cs"
-"Assets/Script/chooseCard3.cs"
-"Assets/Script/chooseCard4.cs"
-"Assets/Script/chooseCard5.cs"
+"Assets/Script/chooseCard/chooseCard1.cs"
+"Assets/Script/chooseCard/chooseCard2.cs"
+"Assets/Script/chooseCard/chooseCard3.cs"
+"Assets/Script/chooseCard/chooseCard4.cs"
+"Assets/Script/chooseCard/chooseCard5.cs"
+"Assets/Script/dataCard.cs"
+"Assets/Script/enemyBasic.cs"
 "Assets/Script/MainCharacterScript.cs"
 "Assets/Script/Main_Menu.cs"
 "Assets/Script/play_cards.cs"
-"Assets/Script/useCard.cs"
 -langversion:9.0
 
 /deterministic
