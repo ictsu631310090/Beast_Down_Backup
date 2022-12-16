@@ -57,15 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\button_in_game.cs" />
-    <Compile Include="Assets\Script\chooseCard2.cs" />
-    <Compile Include="Assets\Script\chooseCard1.cs" />
+    <Compile Include="Assets\Script\chooseCard\chooseCard2.cs" />
+    <Compile Include="Assets\Script\chooseCard\chooseCard1.cs" />
     <Compile Include="Assets\Script\MainCharacterScript.cs" />
-    <Compile Include="Assets\Script\chooseCard3.cs" />
+    <Compile Include="Assets\Script\chooseCard\chooseCard3.cs" />
     <Compile Include="Assets\Script\Main_Menu.cs" />
     <Compile Include="Assets\Script\play_cards.cs" />
-    <Compile Include="Assets\Script\chooseCard4.cs" />
-    <Compile Include="Assets\Script\useCard.cs" />
-    <Compile Include="Assets\Script\chooseCard5.cs" />
+    <Compile Include="Assets\Script\chooseCard\chooseCard4.cs" />
+    <Compile Include="Assets\Script\chooseCard\chooseCard5.cs" />
+    <Compile Include="Assets\Script\enemyBasic.cs" />
+    <Compile Include="Assets\Script\dataCard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

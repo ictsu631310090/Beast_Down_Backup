@@ -17,10 +17,6 @@ public class MainCharacterScript : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        if (other.gameObject.tag == "enemy")
-        {
-            Debug.Log("Hit");
-        }
     }
     public void zoomin()
     {
