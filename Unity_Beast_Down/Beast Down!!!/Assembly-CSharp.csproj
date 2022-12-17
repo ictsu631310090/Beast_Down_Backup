@@ -63,10 +63,10 @@
     <Compile Include="Assets\Script\chooseCard\chooseCard3.cs" />
     <Compile Include="Assets\Script\Main_Menu.cs" />
     <Compile Include="Assets\Script\play_cards.cs" />
-    <Compile Include="Assets\Script\chooseCard\chooseCard4.cs" />
-    <Compile Include="Assets\Script\chooseCard\chooseCard5.cs" />
     <Compile Include="Assets\Script\enemyBasic.cs" />
+    <Compile Include="Assets\Script\chooseCard\chooseCard4.cs" />
     <Compile Include="Assets\Script\dataCard.cs" />
+    <Compile Include="Assets\Script\chooseCard\chooseCard5.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

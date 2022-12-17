@@ -9,8 +9,12 @@ public class MainCharacterScript : MonoBehaviour
     public GameObject canva;
     public float running_speed = 6.0f;
     public static float _SpeedTime = 1.0f;
+    public static bool getzoom = false;
+    public static int HP = 30;
+
     //test
     public bool running = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "map")
@@ -40,14 +44,15 @@ public class MainCharacterScript : MonoBehaviour
     void Update()
     {
         Time.timeScale = _SpeedTime;
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || getzoom)
         {
             zoomin();
         }
-        else if(Input.GetKeyDown(KeyCode.S))
+        else if(Input.GetKeyDown(KeyCode.S) || !getzoom)
         {
             zoomout();
         }
+
         if (Input.GetKeyDown(KeyCode.D))
         {
             running = true;
@@ -59,10 +64,6 @@ public class MainCharacterScript : MonoBehaviour
         if (running)
         {
             transform.Translate(1 * Time.deltaTime * running_speed, 0, 0);//เดินไปข้างหน้า
-        }
-        else if (running == false)
-        {
-
         }
     }
 }

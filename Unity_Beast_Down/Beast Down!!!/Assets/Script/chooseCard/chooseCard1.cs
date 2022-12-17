@@ -6,20 +6,20 @@ public class chooseCard1 : MonoBehaviour
 {
     // Start is called before the first frame update
     int i = 1;
-    public static int sequenceCard;
-    public static bool OriLocation = false;
+    bool open = true;
+    public GameObject choosecard;
+    
+    public static bool OriLocation = false;//กรณีเลือกจุดเดิม
     public void OnMouseDown()
     {
         if (OriLocation == false)
         {
             play_cards.hitcard++;
             OriLocation = true;
-            play_cards.sequenceCardOneToFive[play_cards.hitcard - 1] = i;
+            play_cards.sequenceCardOneToFive[i - 1] = play_cards.hitcard;
         }
 
         play_cards.positionchoosecard = i;
-        play_cards.choosecard = true;
-        sequenceCard = play_cards.hitcard;
 
         if (OriLocation == true)
         {
@@ -37,6 +37,15 @@ public class chooseCard1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (play_cards.availableCaedInDeck[i - 1] == true && open == true)
+        {
+            choosecard.transform.Rotate(0, 180, 0);
+            open = false;
+        }
+        else if (play_cards.availableCaedInDeck[i - 1] == false && open == false)
+        {
+            choosecard.transform.Rotate(0, 180, 0);
+            open = true;
+        }
     }
 }

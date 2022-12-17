@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class dataCard : MonoBehaviour
 {
-    public Transform cardDeck;
-    public Transform cardPlay;
-    public Transform cardPlayed;
-
     int[] numOfCard = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                                 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
                                 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
                                 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 };
-
     public static int attack = 0;
     public static bool fight = false;
     public static bool dodge_or_defense = false;//false = defense , true = dodge
@@ -73,31 +68,7 @@ public class dataCard : MonoBehaviour
         fight = true;
     }
 
-    public void chooseCard(GameObject card)
-    {
-        if (play_cards.sequenceCardOneToFive[1] == 1)
-        {
-            card.transform.position = cardPlay.position;
-        }
-        else if (play_cards.sequenceCardOneToFive[2] == 1)
-        {
-            card.transform.position = cardPlay.position;
-        }
-        else if (play_cards.sequenceCardOneToFive[3] == 1)
-        {
-            card.transform.position = cardPlay.position;
-        }
-        else if (play_cards.sequenceCardOneToFive[4] == 1)
-        {
-            card.transform.position = cardPlay.position;
-        }
-        else if (play_cards.sequenceCardOneToFive[5] == 1)
-        {
-            card.transform.position = cardPlay.position;
-        }
-        play_cards.choosecard = true;
-        enemyBasic.enemyHitPlayer = false;
-    }
+
 
     void Start()
     {
@@ -107,10 +78,6 @@ public class dataCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyBasic.enemyHitPlayer)
-        {
-            Debug.Log("Hit");
-            //chooseCard(play_cards.cardOnHead[play_cards.numCard]);
-        }
+
     }
 }
