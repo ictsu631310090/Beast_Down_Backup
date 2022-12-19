@@ -57,6 +57,7 @@ public class play_cards : MonoBehaviour
     }
     public void runCard()//ย้ายการ์ด
     {
+        enemyBasic.enemyHitPlayer = false;
         for (int i = 0; i < 5; i++)
         {
             if (sequenceCardOneToFive[i] == 1)
@@ -148,40 +149,40 @@ public class play_cards : MonoBehaviour
             if (sequenceCardOneToFive[0] == 0 && sequenceCardOneToFive[1] == 0 && sequenceCardOneToFive[2] == 0
                 && sequenceCardOneToFive[3] == 0 && sequenceCardOneToFive[4] == 0)//ไม่ได้เลือกการ์ด
             {
-                Debug.Log("choosecard pls");
                 MainCharacterScript.HP = MainCharacterScript.HP - enemyBasic.HPenemy;
             }
             else
             {
                 runCard();
 
-                availableCaedInDeck[numAvailableCaed] = true; //ทำให้ตำแหน่งว่าการ์ดว่าง(ไม่ได้บอกว่าลำดับที่เท่าไร)
+                availableCaedInDeck[numAvailableCaed] = true; //ทำให้ตำแหน่งว่าการ์ดว่าง(ไม่ได้บอกว่าลำดับที่เท่าไร) // ต้องมาแก้ทีหลัง
 
-                if (enemyBasic.enemyHitPlayer == true)
-                {
-                    discard();
-                    enemyBasic.enemyHitPlayer = false;
-                }
+                //if (enemyBasic.enemyHitPlayer == true)
+                //{
+                //    discard();
+                //}
             }
+            enemyBasic.die = true;
             //MainCharacterScript.getzoom = true;//ใช้ได้แล้ว
         }
-        //if (enemyBasic.outenemy)
-        //{
-        //    Debug.Log("bye");
-        //    if (sequenceCardOneToFive[1] != 0)
-        //    {
-        //        discard();
-        //    }
+        if (enemyBasic.outenemy)
+        {
+            Debug.Log("bye");
+            if (sequenceCardOneToFive[1] != 0)
+            {
+                discard();
+            }
 
-        //    MainCharacterScript.getzoom = false;
-        //    enemyBasic.outenemy = false;
-        //}
+            MainCharacterScript.getzoom = false;
+            enemyBasic.outenemy = false;
+            enemyBasic.die = false;
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             updateNum();
             showsequenceCardOneToFive();
         }
         //Debug.Log(enemyBasic.outenemy);
-        Debug.Log(enemyBasic.enemyHitPlayer);
+        //Debug.Log(enemyBasic.enemyHitPlayer);
     }
 }

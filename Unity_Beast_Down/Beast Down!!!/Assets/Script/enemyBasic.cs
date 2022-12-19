@@ -8,6 +8,8 @@ public class enemyBasic : MonoBehaviour
     public static int HPenemy = 6;
     public static bool enemyHitPlayer = false;
     public static bool outenemy = false;
+    public static bool die = false;
+    public GameObject enemywilldie;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,12 +17,20 @@ public class enemyBasic : MonoBehaviour
         {
             enemyHitPlayer = true;
         }
+        if (die)
+        {
+            Destroy(enemywilldie.gameObject);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             outenemy = true;
+        }
+        if (die)
+        {
+            Destroy(enemywilldie.gameObject);
         }
     }
     void Start()
