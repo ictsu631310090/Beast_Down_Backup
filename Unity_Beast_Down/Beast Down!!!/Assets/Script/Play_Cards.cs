@@ -18,7 +18,7 @@ public class play_cards : MonoBehaviour
     public List<GameObject> playedDeck = new List<GameObject>(); //การ์ดที่เล่นแล้ว
 
     public Transform[] cardSlots; // ตำแหน่งที่วางการ์ด(ไม่ได้บอกลำดับ)
-    public static bool[] availableCaedInDeck = new bool[] {true, true, true, true, true }; //ตำแหน่งที่วางการ์ดว่างหรือไม่
+    public static bool[] availableCaedInDeck = new bool[] { true, true, true, true, true }; //ตำแหน่งที่วางการ์ดว่างหรือไม่
     public Text deckSizeText; //จำนวนการที่เหลือใน deck
 
     public static int hitcard = 0; //จับการใบที่เท่าไร(มีการเปลี่ยนแปลงทุกครั้งที่เลือกการ์ด)
@@ -30,6 +30,8 @@ public class play_cards : MonoBehaviour
     public static int[] sequenceCardOneToFive = new int[] { 0, 0, 0, 0, 0 }; //ลำดับตามตัวเลข
     public int numAvailableCaed; //ลำดับตำแหน่งว่างการ์ด
     public static int numCard; //การ์ดใบที่เท่าไร
+
+    public static bool willruncard = false;
 
     public void DrawCard()
     {
@@ -51,13 +53,12 @@ public class play_cards : MonoBehaviour
             }
         }
     }
-    public void moveCard(int num, GameObject card,Transform go)
+    public void moveCard(int num, GameObject card, Transform go)
     {
         card.transform.position = go.position;
     }
     public void runCard()//ย้ายการ์ด
     {
-        enemyBasic.enemyHitPlayer = false;
         for (int i = 0; i < 5; i++)
         {
             if (sequenceCardOneToFive[i] == 1)
@@ -68,7 +69,6 @@ public class play_cards : MonoBehaviour
         changeNum();//เปลี่ยนลำดับเลือก
         updateNum();//อับเดดลำดับการ์ดที่เลือก
         showsequenceCardOneToFive();
-        enemyBasic.enemyHitPlayer = false;
     }
     public void discard()
     {
@@ -77,10 +77,10 @@ public class play_cards : MonoBehaviour
             if (sequenceCardOneToFive[i] == 1)
             {
                 play[i].transform.position = cardPlayed.position;
+                playedDeck.Add(play[i]);
+                play.Remove(play[i]);
             }
         }
-        playedDeck.Add(play[0]);
-        play.Remove(play[0]);
     }
     public void changeNum()
     {
@@ -141,48 +141,17 @@ public class play_cards : MonoBehaviour
         //    ShuffleCaed();
         //}
         updateNum();
-
         deckSizeText.text = deck.Count.ToString(); // อับเดดจำนวนการ์ดที่เหลือใน deck
 
-        if (enemyBasic.enemyHitPlayer)
+        if (willruncard)
         {
-            if (sequenceCardOneToFive[0] == 0 && sequenceCardOneToFive[1] == 0 && sequenceCardOneToFive[2] == 0
-                && sequenceCardOneToFive[3] == 0 && sequenceCardOneToFive[4] == 0)//ไม่ได้เลือกการ์ด
-            {
-                MainCharacterScript.HP = MainCharacterScript.HP - enemyBasic.HPenemy;
-            }
-            else
-            {
-                runCard();
+            runCard();
+            willruncard = false;
+            availableCaedInDeck[numAvailableCaed] = true; //ทำให้ตำแหน่งว่าการ์ดว่าง(ไม่ได้บอกว่าลำดับที่เท่าไร) // ต้องมาแก้ทีหลัง
 
-                availableCaedInDeck[numAvailableCaed] = true; //ทำให้ตำแหน่งว่าการ์ดว่าง(ไม่ได้บอกว่าลำดับที่เท่าไร) // ต้องมาแก้ทีหลัง
-
-                //if (enemyBasic.enemyHitPlayer == true)
-                //{
-                //    discard();
-                //}
-            }
-            enemyBasic.die = true;
-            //MainCharacterScript.getzoom = true;//ใช้ได้แล้ว
-        }
-        if (enemyBasic.outenemy)
-        {
             Debug.Log("bye");
-            if (sequenceCardOneToFive[1] != 0)
-            {
-                discard();
-            }
-
+            discard();
             MainCharacterScript.getzoom = false;
-            enemyBasic.outenemy = false;
-            enemyBasic.die = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            updateNum();
-            showsequenceCardOneToFive();
-        }
-        //Debug.Log(enemyBasic.outenemy);
-        //Debug.Log(enemyBasic.enemyHitPlayer);
     }
 }

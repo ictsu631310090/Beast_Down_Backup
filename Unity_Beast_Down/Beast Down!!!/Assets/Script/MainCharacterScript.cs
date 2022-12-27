@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainCharacterScript : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class MainCharacterScript : MonoBehaviour
     public float running_speed = 6.0f;
     public static float _SpeedTime = 1.0f;
     public static bool getzoom = false;
+    public Slider hpBar;
     public static int HP = 30;
+    public Text hptext;
 
     //test
     public bool running = false;
@@ -20,6 +23,11 @@ public class MainCharacterScript : MonoBehaviour
         if (other.gameObject.tag == "map")
         {
             Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "enemy" && enemyBasic.getdamage)
+        {
+            Destroy(other.gameObject);
+            enemyBasic.getdamage = false;
         }
     }
     public void zoomin()
@@ -36,6 +44,7 @@ public class MainCharacterScript : MonoBehaviour
     }
     void Start()
     {
+        HP = 30;
         _SpeedTime = 1.0f;
         _camera1.SetActive(true);
     }
@@ -43,6 +52,8 @@ public class MainCharacterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hpBar.value = HP;
+        hptext.text = "HP : " + HP.ToString();
         Time.timeScale = _SpeedTime;
         if (Input.GetKeyDown(KeyCode.W) || getzoom)
         {
